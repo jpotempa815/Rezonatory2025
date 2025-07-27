@@ -1,0 +1,4 @@
+Polaryzacja P (perpendicular) rownolegla do podloza
+Moc bez polaryzatora: 0,456W
+Moc z polaryzatorem 0 st.: 0,282W
+Moc z polaryzatorem 90 st.: 0,002W
