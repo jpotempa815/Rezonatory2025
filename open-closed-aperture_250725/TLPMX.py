@@ -308,6 +308,7 @@ class TLPMX:
 			dll_name = "TLPMX_64.dll"
 			dllabspath = os.path.dirname(os.path.abspath(__file__)) + os.path.sep + dll_name
 			self.dll = cdll.LoadLibrary(dllabspath)
+			#self.dll = cdll.LoadLibrary("/workspaces/Rezonatory2025/pomiary_230725/TLPMX_64.dll")
 
 		self.devSession = c_long()
 		self.devSession.value = 0
