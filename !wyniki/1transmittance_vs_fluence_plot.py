@@ -47,8 +47,8 @@ z2_maxT = z_sample[np.argmax(T2)]
 z1_shift = z_min - z1_maxT
 z2_shift = z_min - z2_maxT
 
-z1_cal = z_cal + z1_shift
-z2_cal = z_cal + z2_shift
+z1_cal = z_cal - z1_shift
+z2_cal = z_cal - z2_shift
 
 '''FITTING'''
 
@@ -110,7 +110,7 @@ sns.set(style="whitegrid")
 plt.figure(figsize=(10,8))
 # plt.plot(Fx1, T1, color='cornflowerblue', linewidth=2, label='Pomiar w osi X')
 # plt.plot(Fy1, T1, color='coral', linewidth=2, label='Pomiar w osi Y')
-plt.plot(Fy1, T1, color='cornflowerblue', linewidth=2, label='Miernik 1')
+plt.plot(Fy2, T1, color='cornflowerblue', linewidth=2, label='Miernik 1')
 # plt.plot(Fx2, T2, color='coral', linewidth=2, label='Miernik 2')
 
 plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=14)
