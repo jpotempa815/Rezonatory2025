@@ -69,7 +69,7 @@ if __name__=='__main__':
         # deviceA.setTimeoutValue(1000)                             
         # deviceB.setTimeoutValue(1000)                                                   
 
-        out = "open_close_aperture_290725.csv"
+        out = "open_close_aperture_mwcnt1_290725.csv"
 
         power1_measurements = []
         power2_measurements = []
