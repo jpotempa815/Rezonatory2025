@@ -43,8 +43,16 @@ if __name__=='__main__':
 
         _deviceList = ThorlabsPowerMeter.listDevices()
         logger=_deviceList.logger
-        deviceA=_deviceList.connect(_deviceList.resourceName[0])
-        deviceB=_deviceList.connect(_deviceList.resourceName[1])
+        # deviceA=_deviceList.connect(_deviceList.resourceName[0])
+        # deviceB=_deviceList.connect(_deviceList.resourceName[1])
+        deviceA = _deviceList.connect(_deviceList.resourceName[0])
+        if deviceA is None:
+            logger.error(f"Failed to connect to device: {_deviceList.resourceName[0]}")
+            sys.exit(1)
+        deviceB = _deviceList.connect(_deviceList.resourceName[1])
+        if deviceB is None:
+            logger.error(f"Failed to connect to device: {_deviceList.resourceName[1]}")
+            sys.exit(1)
         deviceA.getSensorInfo()
         deviceB.getSensorInfo()
         deviceA.setWaveLength(2300) 
@@ -58,10 +66,10 @@ if __name__=='__main__':
         time.sleep(5)                                                    
         deviceA.setAverageTime(0.01)
         deviceB.setAverageTime(0.01)                           
-        deviceA.setTimeoutValue(1000)                             
-        deviceB.setTimeoutValue(1000)                                                   
+        # deviceA.setTimeoutValue(1000)                             
+        # deviceB.setTimeoutValue(1000)                                                   
 
-        out = "open_close_aperture_250725.csv"
+        out = "open_close_aperture_290725.csv"
 
         power1_measurements = []
         power2_measurements = []
@@ -83,10 +91,10 @@ if __name__=='__main__':
         step_size = step_size_norm
 
         while pos + step_size <= max_pos:
-            # if 20 < pos < 28:
-            #     step_size = step_size_peak
-            # else:
-            #     step_size = step_size_norm
+            if 20 < pos < 28:
+                step_size = step_size_peak
+            else:
+                step_size = step_size_norm
             pos += step_size
             logger.info(f"Position: {pos:.2f} mm")
             axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)
