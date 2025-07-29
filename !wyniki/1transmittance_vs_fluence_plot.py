@@ -36,7 +36,10 @@ P1_measured = df['Power1 [W]']
 P2_measured = df['Power2 [W]']
 z = df['Position [mm]']
 z_sample = z * 1e-3  # mm -> m
-P_ref = 0.484	#W
+# 230725
+# P_ref = 0.484
+# 290725
+P_ref = 0.456	#W
 
 T1 = P1_measured / P_ref * 100 #transmitancja [%]
 T2 = P2_measured / P_ref * 100
@@ -47,8 +50,8 @@ z2_maxT = z_sample[np.argmax(T2)]
 z1_shift = z_min - z1_maxT
 z2_shift = z_min - z2_maxT
 
-z1_cal = z_cal - z1_shift
-z2_cal = z_cal - z2_shift
+z1_cal = z_cal + z1_shift
+z2_cal = z_cal + z2_shift
 
 '''FITTING'''
 
@@ -67,8 +70,8 @@ fitParams_Y2, fitCovariances_Y2 = optimize.curve_fit(d4Sig, z2_cal, d_cal_Y, p0=
 # M2_Y -> fitParams_Y[1]
 
 plt.scatter(z_cal, d_cal_X)
-plt.plot(z1_cal, d4Sig(z_cal, fitParams_X1[0], fitParams_X1[1], fitParams_X1[2]), label='z1')
-plt.plot(z2_cal, d4Sig(z_cal, fitParams_X2[0], fitParams_X2[1], fitParams_X2[2]), label='z2')
+plt.plot(z1_cal, d4Sig(z1_cal, fitParams_X1[0], fitParams_X1[1], fitParams_X1[2]), label='z1')
+plt.plot(z2_cal, d4Sig(z2_cal, fitParams_X2[0], fitParams_X2[1], fitParams_X2[2]), label='z2')
 file_save = 'fit.png'
 plt.legend()
 plt.savefig(os.path.join(my_path, file_save))
@@ -103,15 +106,15 @@ Fy1 = E1/Ay1 #uJ/cm2
 Fx2 = E2/Ax2 #uJ/cm2
 Fy2 = E2/Ay2 #uJ/cm2
 
-'''PLOTTING'''
+# '''PLOTTING'''
 
 sns.set(style="whitegrid")
 
 plt.figure(figsize=(10,8))
-# plt.plot(Fx1, T1, color='cornflowerblue', linewidth=2, label='Pomiar w osi X')
-# plt.plot(Fy1, T1, color='coral', linewidth=2, label='Pomiar w osi Y')
+plt.plot(Fx1, T1, color='cornflowerblue', linewidth=2, label='Pomiar w osi X')
+plt.plot(Fy1, T1, color='coral', linewidth=2, label='Pomiar w osi Y')
 plt.plot(Fy2, T1, color='cornflowerblue', linewidth=2, label='Miernik 1')
-# plt.plot(Fx2, T2, color='coral', linewidth=2, label='Miernik 2')
+plt.plot(Fx2, T2, color='coral', linewidth=2, label='Miernik 2')
 
 plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=14)
 plt.ylabel("Transmittance [%]", fontsize=14)
