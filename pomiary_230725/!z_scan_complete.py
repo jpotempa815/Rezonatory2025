@@ -4,11 +4,18 @@ from datetime import datetime
 from ctypes import *
 from TLPMX import TLPMX, TLPM_DEFAULT_CHANNEL
 import time
+import os
 import csv
 
 Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
+# katalog zapisu 
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary_300725'
+# nazwa pliku
+out_file = "z_scan_300725.csv"
+# sciezka do pliku
+out = os.path.join(my_path, out_file)
 
 with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowiednią nazwę portu usb
     connection.enable_alerts()
@@ -68,9 +75,6 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     tlPM.setPowerUnit(c_int16(0), TLPM_DEFAULT_CHANNEL)
     time.sleep(2)   
 
-    #plik
-    out = "nanorurki_230725.csv"
-
     #tablice do zapisu
     power_measurements = []
     time_relative = []
@@ -86,13 +90,13 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     positions.append(pos)
     print(f"{t_rel:.2f} s: {power.value:.6f} W")
 
-    step_size = step_size_norm
+    step_size = step_size_peak
     
     while pos + step_size <= max_pos:
-        if pos > 20 and pos < 28:
-            step_size = step_size_peak
-        else: 
-            step_size = step_size_norm
+        # if pos > 20 and pos < 28:
+        #     step_size = step_size_peak
+        # else: 
+        #     step_size = step_size_norm
         pos += step_size
         print(f"Position: {pos:.2f} mm")
         axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)
