@@ -13,7 +13,7 @@ Library.enable_device_db_store()
 # katalog zapisu 
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary_300725'
 # nazwa pliku
-out_file = "z_scan_300725.csv"
+out_file = "z_scan_2_300725.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -32,7 +32,7 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
     #parametry ruchu stolika
     min_pos = 0  # mm
-    max_pos = 47 # mm
+    max_pos = 40 # mm
     step_size_norm = 0.5 # mm
     step_size_peak = 0.1 #mm
     delay = 0.5 #s
@@ -90,7 +90,7 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     positions.append(pos)
     print(f"{t_rel:.2f} s: {power.value:.6f} W")
 
-    step_size = step_size_peak
+    step_size = step_size_norm
     
     while pos + step_size <= max_pos:
         # if pos > 20 and pos < 28:
