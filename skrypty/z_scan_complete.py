@@ -10,10 +10,12 @@ import csv
 Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
-# katalog zapisu 
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary_310725'
+# katalog skryptu ??
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\skrypty'
+# katalog zapisu
+path_save = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_310725'
 # nazwa pliku
-out_file = "z_scan_apertura_310725.csv"
+out_file = "grafen_m1_310725.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -32,7 +34,7 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
     #parametry ruchu stolika
     min_pos = 0  # mm
-    max_pos = 40 # mm
+    max_pos = 55 # mm
     step_size_norm = 0.5 # mm
     step_size_peak = 0.1 #mm
     delay = 0.5 #s

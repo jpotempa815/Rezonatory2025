@@ -4,11 +4,11 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_310725'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_310725'
 # wpisz nazwę pliku
-file = r'z_scan_apertura_310725.csv'
+file = r'grafen_m1_310725.csv'
 # wpisz nazwę pliku do zapisu wykresu
-file_save = r'z_scan_apertura_310725_plot.png'
+file_save = r'grafen_m1_310725_plot.png'
 
 data = pd.read_csv(os.path.join(my_path, file))
 df = pd.DataFrame(data)
