@@ -4,11 +4,11 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary_300725'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_310725'
 # wpisz nazwę pliku
-file = r'z_scan_310725.csv'
+file = r'z_scan_apertura_310725.csv'
 # wpisz nazwę pliku do zapisu wykresu
-file_save = r'z_scan_310725_plot.png'
+file_save = r'z_scan_apertura_310725_plot.png'
 
 data = pd.read_csv(os.path.join(my_path, file))
 df = pd.DataFrame(data)
@@ -36,7 +36,7 @@ plt.plot(z, P, color='darkorange', label='Moc')
 # plt.plot(z, P2, color='darkblue')
 plt.xlabel('Pozycja [mm]')
 plt.ylabel('Moc [W]')
-plt.xlim(0,46.5)
+plt.xlim(0,40)
 plt.grid(linestyle='--')
 plt.savefig(os.path.join(my_path, file_save))
 plt.show()
