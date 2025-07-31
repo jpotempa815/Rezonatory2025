@@ -6,9 +6,9 @@ import os
 # wpisz ścieżkę do katalogu z danymi
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary_300725'
 # wpisz nazwę pliku
-file = r'z_scan_2_300725.csv'
+file = r'z_scan_310725.csv'
 # wpisz nazwę pliku do zapisu wykresu
-file_save = r'z_scan_2_300725_plot.png'
+file_save = r'z_scan_310725_plot.png'
 
 data = pd.read_csv(os.path.join(my_path, file))
 df = pd.DataFrame(data)
