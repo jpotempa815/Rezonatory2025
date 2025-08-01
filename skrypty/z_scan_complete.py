@@ -10,12 +10,10 @@ import csv
 Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
-# katalog skryptu ??
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\skrypty'
 # katalog zapisu
-path_save = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_310725'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
 # nazwa pliku
-out_file = "grafen_m1_310725.csv"
+out_file = "grafen_m1_3_010825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -33,7 +31,7 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
 
     #parametry ruchu stolika
-    min_pos = 0  # mm
+    min_pos = 5  # mm
     max_pos = 55 # mm
     step_size_norm = 0.5 # mm
     step_size_peak = 0.1 #mm
@@ -72,7 +70,7 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     print("Last calibration date:", c_char_p(message.raw).value.decode())
 
     #konfiguracja
-    tlPM.setWavelength(c_double(532.5), TLPM_DEFAULT_CHANNEL)
+    tlPM.setWavelength(c_double(2300), TLPM_DEFAULT_CHANNEL)
     tlPM.setPowerAutoRange(c_int16(1), TLPM_DEFAULT_CHANNEL)
     tlPM.setPowerUnit(c_int16(0), TLPM_DEFAULT_CHANNEL)
     time.sleep(2)   
@@ -95,10 +93,10 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     step_size = step_size_norm
     
     while pos + step_size <= max_pos:
-        # if pos > 20 and pos < 28:
-        #     step_size = step_size_peak
-        # else: 
-        #     step_size = step_size_norm
+        if pos > 25 and pos < 25:
+            step_size = step_size_peak
+        else: 
+            step_size = step_size_norm
         pos += step_size
         print(f"Position: {pos:.2f} mm")
         axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)

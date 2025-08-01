@@ -39,7 +39,9 @@ z_sample = z * 1e-3  # mm -> m
 # 230725
 # P_ref = 0.484
 # 290725
-P_ref = 0.456	#W
+# P_ref = 0.456	#W
+# 010825
+P_ref = 0.522 #W
 
 T1 = P1_measured / P_ref * 100 #transmitancja [%]
 T2 = P2_measured / P_ref * 100
