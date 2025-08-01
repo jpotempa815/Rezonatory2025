@@ -28,7 +28,7 @@ if __name__=='__main__':
 
         # parametry ruchu
         min_pos = 0
-        max_pos = 47
+        max_pos = 25
         step_size_norm = 0.5
         step_size_peak = 0.1
         delay = 0.5
@@ -69,7 +69,12 @@ if __name__=='__main__':
         # deviceA.setTimeoutValue(1000)                             
         # deviceB.setTimeoutValue(1000)                                                   
 
-        out = "power-meter_reference_290725.csv"
+        #katalog
+        my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
+        #nazwa pliku
+        out = "power-meter_reference_010825.csv"
+        #sciezka do pliku
+        out = os.path.join(my_path, out)
 
         power1_measurements = []
         power2_measurements = []
@@ -91,7 +96,7 @@ if __name__=='__main__':
         step_size = step_size_norm
 
         while pos + step_size <= max_pos:
-            if 20 < pos < 28:
+            if 5 < pos < 7:
                 step_size = step_size_peak
             else:
                 step_size = step_size_norm
