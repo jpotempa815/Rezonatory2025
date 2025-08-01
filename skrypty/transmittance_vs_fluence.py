@@ -16,8 +16,15 @@ def d4Sig(z,w0,m2,z0,lam=2300e-9):
 
 '''CALIBRATION DATA'''
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
-my_path2 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\290725_open_closed_aperture'
-filename_cal = os.path.join(my_path2, 'kalibracja.txt')
+# dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
+# my_path2 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\290725_open_closed_aperture'
+# dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
+my_path2 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
+filename_cal = os.path.join(my_path2, 'beam_profile.txt')
+# nazwa wykresu
+file_save2 = 'grafen_m1_8_fluencja.png'
+
+
 data_cal = np.array(np.genfromtxt(filename_cal))
 z_cal = data_cal[:, 0]*1e-3
 d_cal_X = data_cal[:, 1]*1e-6 #um -> m
@@ -29,7 +36,7 @@ z_min = zx_min
 
 '''GRAPH SHIFT'''
 
-file_zscan = 'grafen_m1_4_010825.csv'
+file_zscan = 'grafen_m1_8_010825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 df = pd.DataFrame(data)
 
@@ -42,8 +49,9 @@ z_sample = z * 1e-3  # mm -> m
 # P_ref = 0.484
 # 290725
 # P_ref = 0.456	#W
-# 010825
-P_ref = 0.515 #W
+# 010825 graf_m1_1-4
+# P_ref = 0.515 #W
+P_ref = 0.499 #W
 
 T = P_measured / P_ref * 100
 # T1 = P1_measured / P_ref * 100 #transmitancja [%]
@@ -141,6 +149,5 @@ plt.ylabel("Transmittance [%]", fontsize=14)
 plt.xscale('log')
 plt.grid(linestyle='--')
 plt.legend()
-file_save2 = 'grafen_m1_4_fluencja.png'
 plt.savefig(os.path.join(my_path, file_save2))
 plt.show()
