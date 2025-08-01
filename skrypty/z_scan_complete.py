@@ -13,7 +13,7 @@ Library.enable_device_db_store()
 # katalog zapisu
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
 # nazwa pliku
-out_file = "grafen_m1_3_010825.csv"
+out_file = "grafen_m1_4_010825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -31,8 +31,8 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
 
     #parametry ruchu stolika
-    min_pos = 5  # mm
-    max_pos = 55 # mm
+    min_pos = 0  # mm
+    max_pos = 60 # mm
     step_size_norm = 0.5 # mm
     step_size_peak = 0.1 #mm
     delay = 0.5 #s
@@ -93,10 +93,10 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     step_size = step_size_norm
     
     while pos + step_size <= max_pos:
-        if pos > 25 and pos < 25:
-            step_size = step_size_peak
-        else: 
-            step_size = step_size_norm
+        # if pos > 25 and pos < 35:
+        #     step_size = step_size_peak
+        # else: 
+        #     step_size = step_size_norm
         pos += step_size
         print(f"Position: {pos:.2f} mm")
         axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)

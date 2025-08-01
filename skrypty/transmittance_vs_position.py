@@ -6,9 +6,9 @@ import os
 # wpisz ścieżkę do katalogu z danymi
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
 # wpisz nazwę pliku
-file = r'grafen_m1_3_010825.csv'
+file = r'grafen_m1_4_010825.csv'
 # wpisz nazwę pliku do zapisu wykresu
-file_save = r'grafen_m1_3_010825_plot.png'
+file_save = r'grafen_m1_4_010825_plot.png'
 
 data = pd.read_csv(os.path.join(my_path, file))
 df = pd.DataFrame(data)
@@ -36,7 +36,7 @@ plt.plot(z, P, color='darkorange', label='Moc')
 # plt.plot(z, P2, color='darkblue')
 plt.xlabel('Pozycja [mm]')
 plt.ylabel('Moc [W]')
-plt.xlim(5,55)
+plt.xlim(0,60)
 plt.grid(linestyle='--')
 plt.savefig(os.path.join(my_path, file_save))
 plt.show()
