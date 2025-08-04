@@ -6,13 +6,13 @@ import os
 # wpisz ścieżkę do katalogu z danymi
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_040825'
 # wpisz nazwę pliku
-file = r'grafen_m1_pkt1_1_040825.csv'
-file2 = r'grafen_m1_pkt1_2_040825.csv'
-file3 = r'grafen_m1_pkt1_3_040825.csv'
+file = r'grafen_m1_1_time=2_040825.csv'
+file2 = r'grafen_m1_1_time=5_040825.csv'
+file3 = r'grafen_m1_1_time=10_040825.csv'
 # nazwa katalogu zapisu
 save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_040825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'elev_baseline_pkt1.png'
+file_save = r'meas_delay_time=5_040825.png'
 
 data = pd.read_csv(os.path.join(my_path, file))
 data2 = pd.read_csv(os.path.join(my_path, file2))
@@ -25,13 +25,15 @@ P1 = df['Power [W]']
 P2 = df2['Power [W]']
 P3 = df3['Power [W]']
 
-z = df['Position [mm]']
+z1 = df['Position [mm]']
+z2 = df2['Position [mm]']
+z3 = df3['Position [mm]']
 
 '''PLOT'''
 
-plt.plot(z, P1, color='darkorange', label='Moc 1')
-plt.plot(z, P2, color='blue', label='Moc 2')
-plt.plot(z, P3, color='green', label='Moc 3')
+plt.plot(z1, P1, color='darkorange', label='Czas: 2s')
+plt.plot(z2, P2, color='blue', label='Czas: 5s')
+plt.plot(z3, P3, color='green', label='Czas: 10s')
 plt.xlabel('Pozycja [mm]')
 plt.ylabel('Moc [W]')
 plt.xlim(0,25)

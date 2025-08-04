@@ -13,7 +13,7 @@ Library.enable_device_db_store()
 # katalog zapisu
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_040825'
 # nazwa pliku
-out_file = "grafen_m1_pkt3_3_040825.csv"
+out_file = "laser_vs_probka_1_040825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -90,13 +90,13 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     positions.append(pos)
     print(f"{t_rel:.2f} s: {power.value:.6f} W")
 
-    step_size = step_size_norm
+    step_size = step_size_peak
     
     while pos + step_size <= max_pos:
-        if pos > 5 and pos < 7:
-            step_size = step_size_peak
-        else: 
-            step_size = step_size_norm
+        # if pos > 5 and pos < 7:
+        #     step_size = step_size_peak
+        # else: 
+        #     step_size = step_size_norm
         pos += step_size
         print(f"Position: {pos:.2f} mm")
         axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)
