@@ -46,7 +46,8 @@ P1 = df['Power1 [W]']
 P2 = df['Power2 [W]']
 z = df['Position [mm]']
 z_sample = z * 1e-3  # mm -> m
-P_ref = 0.0086 
+# P_ref = 0.0086 
+P_ref = 0.0097
 
 T = P2 / P1 * P_ref * 100
 

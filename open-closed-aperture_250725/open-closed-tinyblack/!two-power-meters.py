@@ -70,9 +70,9 @@ if __name__=='__main__':
         # deviceB.setTimeoutValue(1000)                                                   
 
         #katalog
-        my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
+        my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_040825'
         #nazwa pliku
-        out = "power-meter_reference_010825.csv"
+        out = "power-meter_reference_040825.csv"
         #sciezka do pliku
         out = os.path.join(my_path, out)
 
