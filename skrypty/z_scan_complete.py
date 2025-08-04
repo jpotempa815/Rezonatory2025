@@ -11,9 +11,9 @@ Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
 # katalog zapisu
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_040825'
 # nazwa pliku
-out_file = "grafen_m1_8_010825.csv"
+out_file = "grafen_m1_pkt3_3_040825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 

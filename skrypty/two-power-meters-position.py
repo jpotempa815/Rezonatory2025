@@ -27,8 +27,8 @@ P_ref = 0.009665 # 0.97%
 T = P2/P1 * P_ref *100 #%
 
 '''PLOT'''
-
-plt.plot(z, T, color='darkorange', label='Moc')
+# plt.plot(z, P1, color='blue', label='Power1 [W]')
+plt.plot(z, P2, color='darkorange', label='Moc')
 plt.xlabel('Pozycja [mm]')
 plt.ylabel('Transmitancja [%]')
 plt.xlim(0,25)
