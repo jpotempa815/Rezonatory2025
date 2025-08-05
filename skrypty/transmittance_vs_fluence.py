@@ -15,12 +15,13 @@ def d4Sig(z,w0,m2,z0,lam=2300e-9):
 	return np.sqrt(w0**2 + m2**2 * (lam/(np.pi*w0))**2 * (z-z0)**2)
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\010825'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_230725'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
-# my_path2 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\290725_open_closed_aperture'
+# my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
 my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
+# filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
 file_save2 = 'grafen_m1_8_fluencja.png'
@@ -37,7 +38,7 @@ z_min = zx_min
 
 '''GRAPH SHIFT'''
 
-file_zscan = 'grafen_m1_8_010825.csv'
+file_zscan = 'power_vs_position_mwcnt1_3_23072025.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 df = pd.DataFrame(data)
 
@@ -73,12 +74,16 @@ fitParams_Y, fitCovariances_Y = optimize.curve_fit(d4Sig, z_cal, d_cal_Y, p0=(14
 # w0_Y -> fitParams_Y[0]
 # M2_Y -> fitParams_Y[1]
 
-# plt.scatter(z_cal, d_cal_X)
-# # plt.plot(z1_cal, d4Sig(z1_cal, fitParams_X1[0], fitParams_X1[1], fitParams_X1[2]), label='z1')
-# # plt.plot(z2_cal, d4Sig(z2_cal, fitParams_X2[0], fitParams_X2[1], fitParams_X2[2]), label='z2')
-# plt.plot(z_cal, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2]))
+# plt.plot(z1_cal, d4Sig(z1_cal, fitParams_X1[0], fitParams_X1[1], fitParams_X1[2]), label='z1')
+# plt.plot(z2_cal, d4Sig(z2_cal, fitParams_X2[0], fitParams_X2[1], fitParams_X2[2]), label='z2')
+# plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2])*1e6, color = 'orangered', label = 'Dopasowana funkcja')
+# plt.scatter(z_cal*1e3, d_cal_X*1e6, color = 'orange', label='Pomiar kalibracyjny')
 # file_save = 'fit.png'
 # plt.legend()
+# plt.ylabel(r"Szerokość wiązki [$\mu$m]")
+# plt.xlabel("Pozycja [mm]")
+# plt.legend()
+# plt.grid(ls='--')
 # plt.savefig(os.path.join(my_path, file_save))
 # plt.show()
 
