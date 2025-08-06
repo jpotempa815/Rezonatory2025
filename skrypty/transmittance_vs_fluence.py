@@ -22,16 +22,16 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_060825'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_040825'
+save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_060825'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_060825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
-my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
+my_path2 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_010825'
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'laser_vs_probka_13_040825_fluencja_dopasowanie.png'
+file_save2 = '2PA_4_fluencja_dopasowanie.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -45,11 +45,11 @@ z_min = zx_min
 
 '''GRAPH SHIFT'''
 
-file_zscan = 'laser_vs_probka_13_040825.csv'
+file_zscan = '2PA_4_060825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 df = pd.DataFrame(data)
  
-P_measured = df['Power2 [W]']
+P_measured = df['Power [W]']
 z = df['Position [mm]']
 z_sample = z * 1e-3  # mm -> m
 # 230725
@@ -60,8 +60,10 @@ z_sample = z * 1e-3  # mm -> m
 # P_ref = 0.515 #W
 # P_ref = 0.499 #W
 # ekstrapolujemy sobie moc referencyjną 
-P1 = 0.00362 #W
-P_ref = P1 / 0.0086  
+# P1 = 0.00362 #W
+# P_ref = P1 / 0.0086 
+# 060825 2PA
+P_ref = 0.503 #W
 
 T = P_measured / P_ref * 100
 
@@ -134,8 +136,8 @@ F = E/A_eff #uJ/cm2
 # indeks dla ktorego jest max T
 maxT_index = np.argmax(T)
 
-F_cut = F[maxT_index-8:]
-T_cut = T[maxT_index-8:]
+F_cut = F[maxT_index-1:]
+T_cut = T[maxT_index-1:]
 
 '''PLOT FITTING'''
 fitParams_T, fitCovariances_T = optimize.curve_fit(T_fit, F_cut, T_cut, p0=[12.64, 0.98, 3.91], sigma=None)
