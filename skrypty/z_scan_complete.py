@@ -12,9 +12,9 @@ Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
 # katalog zapisu
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_060825'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_070825'
 # nazwa pliku
-out_file = "2PA_6_20min_break_060825.csv"
+out_file = "dwie_soczewki_070825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -33,9 +33,9 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
     #parametry ruchu stolika
     min_pos = 0  # mm
-    max_pos = 25 # mm
+    max_pos = 15 # mm
     step_size_norm = 0.5 # mm
-    step_size_peak = 0.01 #mm
+    step_size_peak = 0.1 #mm
     delay = 0.5 #s
     measure_delay = 2 #s
 
