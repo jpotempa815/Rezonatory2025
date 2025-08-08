@@ -53,7 +53,7 @@ z3 = df2['Position [mm]']
 
 plt.plot(z1, P1, color='darkorange', label = 'P01')
 plt.plot(z2, P2, color='blue', label = 'P02')
-# plt.plot(z3, P3, color='green', label = 'P03')
+plt.plot(z3, P3, color='green', label = 'P03')
 # plt.plot(z4, P4, color='red', label = 'Pomiar 4 - po 20 minutach naświetlania')
 plt.xlabel('Pozycja [mm]')
 # plt.ylabel('Moc [W]')

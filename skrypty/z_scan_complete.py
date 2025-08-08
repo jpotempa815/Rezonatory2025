@@ -14,7 +14,7 @@ Library.enable_device_db_store()
 # katalog zapisu
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_080825'
 # nazwa pliku
-out_file = "fin_9_080825.csv"
+out_file = "fin_10_080825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
