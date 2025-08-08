@@ -6,13 +6,13 @@ import os
 # wpisz ścieżkę do katalogu z danymi
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_080825'
 # wpisz nazwę pliku
-file = r'fin_4_080825.csv'
-file2 = r'fin_5_080825.csv' 
-file3 = r'fin_6_080825.csv'
+file = r'fin_7_080825.csv'
+file2 = r'fin_9_080825.csv' 
+file3 = r'fin_10_080825.csv'
 # nazwa katalogu zapisu
 save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_080825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'espozycja_fin_080825_plot.png'
+file_save = r'espozycja_fin_2_080825_plot.png'
 
 plt.figure(figsize=(8,6))
 
@@ -51,9 +51,9 @@ z3 = df2['Position [mm]']
 
 '''PLOT'''
 
-plt.plot(z1, P1, color='darkorange', label = 'Pierwszy pomiar')
-plt.plot(z2, P2, color='blue', label = 'Zaraz po pierwszym pomiarze')
-plt.plot(z3, P3, color='green', label = 'Po 30 minutach zasłonięcia')
+plt.plot(z1, P1, color='darkorange', label = 'P01')
+plt.plot(z2, P2, color='blue', label = 'P02')
+# plt.plot(z3, P3, color='green', label = 'P03')
 # plt.plot(z4, P4, color='red', label = 'Pomiar 4 - po 20 minutach naświetlania')
 plt.xlabel('Pozycja [mm]')
 # plt.ylabel('Moc [W]')
