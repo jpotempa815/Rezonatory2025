@@ -12,9 +12,9 @@ Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
 # katalog zapisu
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_080825'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_110825'
 # nazwa pliku
-out_file = "fin_10_080825.csv"
+out_file = "spektrometr_110825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -33,9 +33,9 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
 
     #parametry ruchu stolika
     min_pos = 0  # mm
-    max_pos = 13.5 # mm
+    max_pos = 13 # mm
     step_size_norm = 0.5 # mm
-    step_size_peak = 0.1 #mm
+    step_size_peak = 0.04 #mm
     delay = 0.5 #s
     measure_delay = 2 #s
 
@@ -91,13 +91,13 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     positions.append(pos)
     print(f"{t_rel:.2f} s: {power.value:.6f} W")
 
-    step_size = step_size_norm
+    step_size = step_size_peak
     
     while pos + step_size <= max_pos:
-        if 6 < pos < 10:
-            step_size = step_size_peak
-        else: 
-            step_size = step_size_norm
+        # if 6 < pos < 10:
+        #     step_size = step_size_peak
+        # else: 
+        #     step_size = step_size_norm
         pos += step_size
         print(f"Position: {pos:.2f} mm")
         axis.move_absolute(pos, Units.LENGTH_MILLIMETRES)
