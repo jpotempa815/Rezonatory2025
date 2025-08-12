@@ -6,14 +6,14 @@ import os
 # wpisz ścieżkę do katalogu z danymi
 my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_120825'
 # wpisz nazwę pliku
-file = r'6_probka_120825.csv'
-file2 = r'6_szklo_120825.csv' 
+file = r'9_probka_120825.csv'
+file2 = r'9_szklo_120825.csv' 
 # file3 = r'7_krawedz_120825.csv'
 # file4 = r'fin_4_110825.csv'
 # nazwa katalogu zapisu
 save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_120825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'6_merge_120825_plot.png'
+file_save = r'9_merge_120825_plot.png'
 
 plt.figure(figsize=(8,6))
 
@@ -38,7 +38,6 @@ P0 = 0.5 #W moc lasera
 # P0 = 0.383 #W
 # P01 = 0.384 #z filtrem
 # P02 = 0.405
-P0 = 0.412
 P_wsp = 0.962
 P_ref = P0 * P_wsp #W moc padająca na próbkę
 # P_ref1 = P01 * P_wsp #W moc padająca na próbkę
