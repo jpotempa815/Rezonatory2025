@@ -12,9 +12,9 @@ Library.enable_device_db_store()
 
 # ZMIEN NAZWE PLIKU !!!!!
 # katalog zapisu
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_110825'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_120825'
 # nazwa pliku
-out_file = "spektrometr_110825.csv"
+out_file = "_120825.csv"
 # sciezka do pliku
 out = os.path.join(my_path, out_file)
 
@@ -35,7 +35,8 @@ with Connection.open_serial_port("COM3") as connection: #tu trzeba dać odpowied
     min_pos = 0  # mm
     max_pos = 13 # mm
     step_size_norm = 0.5 # mm
-    step_size_peak = 0.04 #mm
+    step_size_peak = 0.1 # mm
+    # step_size_peak = 0.04 #mm
     delay = 0.5 #s
     measure_delay = 2 #s
 
