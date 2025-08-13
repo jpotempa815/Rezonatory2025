@@ -4,14 +4,13 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
-# wpisz nazwę pliku
-file = r'9_probka_120825.csv'
-file2 = r'9_szklo_120825.csv' 
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_130825'
+file = r'1_probka_130825.csv'
+file2 = r'1_szklo_130825.csv' 
 # nazwa katalogu zapisu
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_130825'
+save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_130825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'1_odjetewidma_130825_plot.png'
+file_save = r'1_merge_130825_plot.png'
 
 plt.figure(figsize=(8,6))
 
@@ -23,6 +22,7 @@ df1 = pd.DataFrame(data1)
 
 # P_soczewka = 0.481 #W moc za pierwszą soczewką
 P0 = 0.5 #W moc lasera
+P0 = 0.5*0.5
 
 P_wsp = 0.962
 P_ref = P0 * P_wsp #W moc padająca na próbkę
@@ -36,12 +36,14 @@ P2_wsp = P2/P_ref
 P_strat = 1 + (1 - P2_wsp) #czynnik strat (czyli ile więcej transmitancji ostatecznie jest)
 
 P1 = df['Power [W]']/P_ref * P_strat * 100
+P2 = P2 / P_ref *100
 
 z1 = df['Position [mm]']
 
 '''PLOT'''
 
 plt.plot(z1, P1, color='darkorange', label = 'Próbka')
+plt.plot(z1, P2, color='blue', label = 'Szkło')
 plt.xlabel('Pozycja [mm]')
 # plt.ylabel('Moc [W]')
 plt.ylabel('Transmitancja [%]')
