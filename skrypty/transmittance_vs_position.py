@@ -4,13 +4,13 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_130825'
-file = r'1_probka_130825.csv'
-file2 = r'1_szklo_130825.csv' 
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
+file = r'1_probka_120825.csv'
+file2 = r'1_szklo_120825.csv' 
 # nazwa katalogu zapisu
-save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_130825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_130825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'1_merge_130825_plot.png'
+file_save = r'1_merge_120825_plot.png'
 
 plt.figure(figsize=(8,6))
 
@@ -22,7 +22,6 @@ df1 = pd.DataFrame(data1)
 
 # P_soczewka = 0.481 #W moc za pierwszą soczewką
 P0 = 0.5 #W moc lasera
-P0 = 0.5*0.5
 
 P_wsp = 0.962
 P_ref = P0 * P_wsp #W moc padająca na próbkę

@@ -22,8 +22,8 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 # T_ns - 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_130825'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_060825'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_040825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
@@ -31,7 +31,7 @@ my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = '1_odjetewidma_fluencja.png'
+file_save2 = 'laser_vs_probka_70_fluencja.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
