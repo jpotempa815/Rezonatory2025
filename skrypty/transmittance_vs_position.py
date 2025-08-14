@@ -4,13 +4,23 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
+<<<<<<< HEAD
 my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
 file = r'1_probka_120825.csv'
 file2 = r'1_szklo_120825.csv' 
+=======
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_130825'
+file = r'1_grafen_m1_probka_130825.csv'
+file2 = r'1_grafen_m1_szklo_130825.csv' 
+>>>>>>> 66b7aa67986ea2787662949ea3d4b28bce9839b8
 # nazwa katalogu zapisu
 save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_130825'
 # wpisz nazwę pliku do zapisu wykresus
+<<<<<<< HEAD
 file_save = r'1_merge_120825_plot.png'
+=======
+file_save = r'grafen_m1_1_130825_plot.png'
+>>>>>>> 66b7aa67986ea2787662949ea3d4b28bce9839b8
 
 plt.figure(figsize=(8,6))
 
@@ -35,14 +45,14 @@ P2_wsp = P2/P_ref
 P_strat = 1 + (1 - P2_wsp) #czynnik strat (czyli ile więcej transmitancji ostatecznie jest)
 
 P1 = df['Power [W]']/P_ref * P_strat * 100
-P2 = P2 / P_ref *100
+# P2 = P2 / P_ref *100
 
 z1 = df['Position [mm]']
 
 '''PLOT'''
 
 plt.plot(z1, P1, color='darkorange', label = 'Próbka')
-plt.plot(z1, P2, color='blue', label = 'Szkło')
+# plt.plot(z1, P2, color='blue', label = 'Szkło')
 plt.xlabel('Pozycja [mm]')
 # plt.ylabel('Moc [W]')
 plt.ylabel('Transmitancja [%]')
