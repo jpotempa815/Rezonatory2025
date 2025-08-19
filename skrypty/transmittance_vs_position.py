@@ -4,16 +4,15 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_180825'
-file1 = r'SixCarbon_probka_1_180825.csv'
-file2 = r'SixCarbon_probka_2_180825.csv' 
-file3 = r'SixCarbon_probka_3_180825.csv'
-file4 = r'SixCarbon_szklo_180825.csv'
-file5 = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_130825\1_grafen_m1_szklo_130825.csv'
+my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\pomiary_190825'
+file1 = r'CNT_200nm_probka_1_190825.csv'
+file2 = r'CNT_200nm_probka_2_190825.csv' 
+file3 = r'CNT_40nm_probka_3_190825.csv'
+file4 = r'CNT_200nm_szklo_190825.csv'
 # nazwa katalogu zapisu
-save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_180825'
+save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_190825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'SixCarbon_plot.png'
+file_save = r'CNT_200nm_plot.png'
 
 plt.figure(figsize=(8,6))
 
@@ -41,13 +40,13 @@ P2_wsp = P2/P_ref
 
 P_strat = 1 + (1 - P2_wsp) #czynnik strat (czyli ile więcej transmitancji ostatecznie jest)
 
-P1_1 = df1['Power [W]']/P_ref *P_strat * 100
+P1_1 = df1['Power [W]']/P_ref * P_strat * 100
 P1_2 = df2['Power [W]']/P_ref * P_strat * 100
 P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_1 = df1['Power [W]']/P_ref * 100
 # P1_2 = df2['Power [W]']/P_ref * 100
 # P1_3 = df3['Power [W]']/P_ref * 100
-# P2 = df4['Power [W]']/P_ref * 100
+P2 = df4['Power [W]']/P_ref * 100
 # P2 = P2 / P_ref *100
 
 z1 = df1['Position [mm]']
@@ -56,8 +55,8 @@ z1 = df1['Position [mm]']
 
 plt.plot(z1, P1_1, color='darkorange', label = 'Punkt 1')
 plt.plot(z1, P1_2, color='red', label = 'Punkt 2')
-plt.plot(z1, P1_3, color='green', label = 'Punkt 3')
-# plt.plot(z1, P2, color='blue', label = 'Szkło 1')
+# plt.plot(z1, P1_3, color='green', label = 'Punkt 3')
+# plt.plot(z1, P2, color='blue', label = 'Szkło')
 plt.xlabel('Pozycja [mm]')
 # plt.ylabel('Moc [W]')
 plt.ylabel('Transmitancja [%]')
