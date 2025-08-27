@@ -144,8 +144,8 @@ plt.figure(figsize=(10,8))
 plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
 plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
 
-plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=14)
-plt.ylabel("Transmittance [%]", fontsize=14)
+plt.xlabel(r"Fluencja $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=14)
+plt.ylabel("Transmitancja [%]", fontsize=14)
 
 plt.xscale('log')
 plt.grid(linestyle='--')
