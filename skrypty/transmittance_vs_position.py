@@ -4,16 +4,13 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\pomiary\grafen'
-file1 = r'G_2L_D3861_probka_3_200825.csv'
-file2 = r'G_2L_D3861_probka_4_200825.csv' 
-file3 = r'CNT_200nm_probka_3_200825.csv'
-file4 = r'CNT_100nm_probka_4_200825.csv'
-file5 = r'G_2L_D3861_szklo_200825.csv'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
+file1 = r'9_probka_120825.csv'
+file2 = r'9_szklo_120825.csv'
 # nazwa katalogu zapisu
-save_path = r'C:\Users\mkowa\Desktop\Julia\Rezonatory2025\wyniki\wyniki_200825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_280825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'grafen_2warstwy_plot.png'
+file_save = r'9_norm_raport_plot.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
@@ -46,19 +43,19 @@ CNT_50nm_2 = ['CNT_1_1b_50nm_probka_1_200825.csv', 'CNT_100nm_szklo_190825.csv']
 plt.figure(figsize=(8,6))
 
 # #grafen
-data1 = pd.read_csv(os.path.join(my_path, grafen_b2[2]))
-data2 = pd.read_csv(os.path.join(my_path, grafen_b2[0]))
-data3 = pd.read_csv(os.path.join(my_path, grafen_m1[2]))
-data4 = pd.read_csv(os.path.join(my_path, grafen_m1[3]))
-data5 = pd.read_csv(os.path.join(my_path, G_3L_D3863[2]))
-data6 = pd.read_csv(os.path.join(my_path, G_3L_D3863[0]))
-data7 = pd.read_csv(os.path.join(my_path, G_3L_D3863[1]))
-data8 = pd.read_csv(os.path.join(my_path, G_1030_BM_D4105[1]))
-data9 = pd.read_csv(os.path.join(my_path, SixCarbon[0]))
-data10 = pd.read_csv(os.path.join(my_path, SixCarbon[3]))
-data11 = pd.read_csv(os.path.join(my_path, G_2L_D3861[0]))
-data12 = pd.read_csv(os.path.join(my_path, G_2L_D3861[1]))
-data13 = pd.read_csv(os.path.join(my_path, G_2L_D3861[2]))
+# data1 = pd.read_csv(os.path.join(my_path, grafen_b2[2]))
+# data2 = pd.read_csv(os.path.join(my_path, grafen_b2[0]))
+# data3 = pd.read_csv(os.path.join(my_path, grafen_m1[2]))
+# data4 = pd.read_csv(os.path.join(my_path, grafen_m1[3]))
+# data5 = pd.read_csv(os.path.join(my_path, G_3L_D3863[2]))
+# data6 = pd.read_csv(os.path.join(my_path, G_3L_D3863[0]))
+# data7 = pd.read_csv(os.path.join(my_path, G_3L_D3863[1]))
+# data8 = pd.read_csv(os.path.join(my_path, G_1030_BM_D4105[1]))
+# data9 = pd.read_csv(os.path.join(my_path, SixCarbon[0]))
+# data10 = pd.read_csv(os.path.join(my_path, SixCarbon[3]))
+# data11 = pd.read_csv(os.path.join(my_path, G_2L_D3861[0]))
+# data12 = pd.read_csv(os.path.join(my_path, G_2L_D3861[1]))
+# data13 = pd.read_csv(os.path.join(my_path, G_2L_D3861[2]))
 
 
 
@@ -93,18 +90,18 @@ data13 = pd.read_csv(os.path.join(my_path, G_2L_D3861[2]))
 
 df1 = pd.DataFrame(data1)
 df2 = pd.DataFrame(data2)
-df3 = pd.DataFrame(data3)
-df3 = pd.DataFrame(data3)
-df4 = pd.DataFrame(data4)
-df5 = pd.DataFrame(data5)
-df6 = pd.DataFrame(data6)
-df7 = pd.DataFrame(data7)
-df8 = pd.DataFrame(data8)
-df9 = pd.DataFrame(data9)
-df10 = pd.DataFrame(data10)
-df11 = pd.DataFrame(data11)
-df12 = pd.DataFrame(data12)
-df13 = pd.DataFrame(data13)
+# df3 = pd.DataFrame(data3)
+# df3 = pd.DataFrame(data3)
+# df4 = pd.DataFrame(data4)
+# df5 = pd.DataFrame(data5)
+# df6 = pd.DataFrame(data6)
+# df7 = pd.DataFrame(data7)
+# df8 = pd.DataFrame(data8)
+# df9 = pd.DataFrame(data9)
+# df10 = pd.DataFrame(data10)
+# df11 = pd.DataFrame(data11)
+# df12 = pd.DataFrame(data12)
+# df13 = pd.DataFrame(data13)
 # df14 = pd.DataFrame(data14)
 # df15 = pd.DataFrame(data15)
 # df16 = pd.DataFrame(data16)
@@ -125,19 +122,19 @@ P_ref = P0 * P_wsp #W moc padająca na próbkę
 # P_bez_probki = 0.44 #W moc tracona na przejściu przez drugą soczewkę i szkiełko
 # P_wsp2 = 0.91476
 
-# P2 = df2['Power [W]']
-# P2_wsp = P2/P_ref
+P2 = df2['Power [W]']
+P2_wsp = P2/P_ref
 # #grafen
-P2_grafen_m1 = df4['Power [W]']
-P2_grafen_b2 = df1['Power [W]']
-P2_G_3L = df5['Power [W]']
-P2_SixCarbon = df10['Power [W]']
-P2_G_2L = df13['Power [W]']
-P2_wsp_grafen_m1 = P2_grafen_m1/P_ref
-P2_wsp_grafen_b2 = P2_grafen_b2/P_ref
-P2_wsp_G_3L = P2_G_3L/P_ref
-P2_wsp_SixCarbon = P2_SixCarbon/P_ref
-P2_wsp_G_2L = P2_G_2L/P_ref
+# P2_grafen_m1 = df4['Power [W]']
+# P2_grafen_b2 = df1['Power [W]']
+# P2_G_3L = df5['Power [W]']
+# P2_SixCarbon = df10['Power [W]']
+# P2_G_2L = df13['Power [W]']
+# P2_wsp_grafen_m1 = P2_grafen_m1/P_ref
+# P2_wsp_grafen_b2 = P2_grafen_b2/P_ref
+# P2_wsp_G_3L = P2_G_3L/P_ref
+# P2_wsp_SixCarbon = P2_SixCarbon/P_ref
+# P2_wsp_G_2L = P2_G_2L/P_ref
 # #nanorurki
 # P2_wsp_swcnt_sa_3_1 = df2['Power [W]']/P_ref
 # P2_wsp_CNT_25nm = df7['Power [W]']/P_ref
@@ -150,13 +147,13 @@ P2_wsp_G_2L = P2_G_2L/P_ref
 # P2_wsp_CNT_300nm = df21['Power [W]']/P_ref
 
 # czynnik strat 
-# P_strat = 1 + (1 - P2_wsp)
+P_strat = 1 + (1 - P2_wsp)
 #grafen
-P_strat_grafen_m1 = 1 + (1 - P2_wsp_grafen_m1) 
-P_strat_grafen_b2 = 1 + (1 - P2_wsp_grafen_b2) 
-P_strat_G_3L = 1 + (1 - P2_wsp_G_3L)
-P_strat_SixCarbon = 1 + (1 - P2_wsp_SixCarbon)
-P_strat_G_2L = 1 + (1 - P2_wsp_G_2L)
+# P_strat_grafen_m1 = 1 + (1 - P2_wsp_grafen_m1) 
+# P_strat_grafen_b2 = 1 + (1 - P2_wsp_grafen_b2) 
+# P_strat_G_3L = 1 + (1 - P2_wsp_G_3L)
+# P_strat_SixCarbon = 1 + (1 - P2_wsp_SixCarbon)
+# P_strat_G_2L = 1 + (1 - P2_wsp_G_2L)
 #nanorurki
 # P_strat_swcnt_sa_3_1 = 1 + (1 - P2_wsp_swcnt_sa_3_1)
 # P_strat_CNT_25nm = 1 + (1 - P2_wsp_CNT_25nm)
@@ -168,19 +165,19 @@ P_strat_G_2L = 1 + (1 - P2_wsp_G_2L)
 # P_strat_CNT_200nm = 1 + (1 - P2_wsp_CNT_200nm)
 # P_strat_CNT_300nm = 1 + (1 - P2_wsp_CNT_300nm)
 
-# P1_1 = df1['Power [W]']/P_ref * P_strat * 100
+P1_1 = df1['Power [W]']/P_ref * P_strat * 100
 # P1_2 = df2['Power [W]']/P_ref * P_strat * 100
 # P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_4 = df4['Power [W]']/P_ref * P_strat * 100
 #grafen
-P1_grafen_m1 = df3['Power [W]']/P_ref * P_strat_grafen_m1 * 100
-P1_grafen_b2 = df2['Power [W]']/P_ref * P_strat_grafen_b2 * 100
-P1_G_3L_1 = df6['Power [W]']/P_ref * P_strat_G_3L * 100
-P1_G_3L_2 = df7['Power [W]']/P_ref * P_strat_G_3L * 100
-P1_G_1030_BM = df8['Power [W]']/P_ref * P_strat_G_3L * 100
-P1_SixCarbon = df9['Power [W]']/P_ref * P_strat_SixCarbon * 100
-P1_G_2L_1 = df11['Power [W]']/ P_ref * P_strat_G_2L * 100
-P1_G_2L_2 = df12['Power [W]']/P_ref * P_strat_G_2L*100
+# P1_grafen_m1 = df3['Power [W]']/P_ref * P_strat_grafen_m1 * 100
+# P1_grafen_b2 = df2['Power [W]']/P_ref * P_strat_grafen_b2 * 100
+# P1_G_3L_1 = df6['Power [W]']/P_ref * P_strat_G_3L * 100
+# P1_G_3L_2 = df7['Power [W]']/P_ref * P_strat_G_3L * 100
+# P1_G_1030_BM = df8['Power [W]']/P_ref * P_strat_G_3L * 100
+# P1_SixCarbon = df9['Power [W]']/P_ref * P_strat_SixCarbon * 100
+# P1_G_2L_1 = df11['Power [W]']/ P_ref * P_strat_G_2L * 100
+# P1_G_2L_2 = df12['Power [W]']/P_ref * P_strat_G_2L*100
 #nanorurki
 # P1_swcnt_sa_3_1 = df1['Power [W]']/P_ref * P_strat_swcnt_sa_3_1 * 100
 # P1_swcnt_sa_3_2 = df3['Power [W]']/P_ref * P_strat_swcnt_sa_3_1 * 100
@@ -201,20 +198,20 @@ P1_G_2L_2 = df12['Power [W]']/P_ref * P_strat_G_2L*100
 # P1_3 = df3['Power [W]']/P_ref * 100
 # P2 = df4['Power [W]']/P_ref * 100
 
-z = df3['Position [mm]']
+# z = df3['Position [mm]']
 z1 = df1['Position [mm]']
 
 '''PLOT'''
 
 # #grafen
 # plt.plot(z, P1_grafen_m1, color='darkorange', label = 'grafen m1 KAIST')
-plt.plot(z1, P1_grafen_b2, color='blue', label = 'grafen b2 KAIST')
+# plt.plot(z1, P1_grafen_b2, color='blue', label = 'grafen b2 KAIST')
 # plt.plot(z1, P1_G_3L_1, color='red', label = 'G_3L: 1 warstwa')
-plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 warstwy')
-plt.plot(z1, P1_G_1030_BM, color='purple', label = 'G_1030_BM')
-plt.plot(z1, P1_SixCarbon, color='brown', label = 'SixCarbon')
+# plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 warstwy')
+# plt.plot(z1, P1_G_1030_BM, color='purple', label = 'G_1030_BM')
+# plt.plot(z1, P1_SixCarbon, color='brown', label = 'SixCarbon')
 # plt.plot(z1, P1_G_2L_1, color='magenta', label='G_2L: 1 warstwa')
-plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 warstwy')
+# plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 warstwy')
 #nanorurki
 # plt.plot(z1, P1_swcnt_sa_3_1, color='darkorange', label = 'swcnt_sa-3(1)')
 # plt.plot(z1, P1_swcnt_sa_3_2, color='blue', label = 'swcnt_sa-3(2)')
@@ -230,7 +227,7 @@ plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 warstwy')
 # plt.plot(z1, P1_CNT_300nm, color='teal', label = 'CNT 300nm')
 # plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (z 23 lipca)')
 
-# plt.plot(z1, P1_1, color='darkorange', label = 'Punkt 1')
+plt.plot(z1, P1_1, color='darkorange', label = 'Punkt 1')
 # plt.plot(z1, P1_2, color='blue', label='Punkt 2')
 # plt.plot(z1, P2, color='blue', label = 'Szkło')
 plt.xlabel('Pozycja [mm]')
@@ -239,7 +236,7 @@ plt.ylabel('Transmitancja [%]')
 # plt.ylabel("Intensywność [arb. units]")
 plt.xlim(0,13)
 # plt.ylim(87,90)
-plt.legend(loc='lower left')
+# plt.legend(loc='lower left')
 # plt.legend()
 plt.grid(linestyle='--')
 plt.savefig(os.path.join(save_path, file_save))
