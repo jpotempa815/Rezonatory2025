@@ -22,8 +22,8 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 # T_ns - 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_210825'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_140825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_280825'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
@@ -31,7 +31,7 @@ my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'grafen_b2_fluencja.png'
+file_save2 = 'kroki_280825_fluencja.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -46,8 +46,8 @@ z_min = z_cal[idx_min]
 
 '''GRAPH SHIFT'''
 
-file_zscan = 'grafen_b2_probka_1_140825.csv'
-file_surf = 'grafen_b2_szklo_140825.csv'
+file_zscan = '2_grafen_m1_probka_130825.csv'
+file_surf = '1_grafen_m1_szklo_130825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 data2 = pd.read_csv(os.path.join(my_path, file_surf))
 

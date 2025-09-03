@@ -4,13 +4,13 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
-file1 = r'9_probka_120825.csv'
-file2 = r'9_szklo_120825.csv'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
+file1 = r'2_grafen_m1_probka_130825.csv'
+file2 = r'1_grafen_m1_szklo_130825.csv'
 # nazwa katalogu zapisu
 save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_280825'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'9_norm_raport_plot.png'
+file_save = r'krok_plot.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
@@ -40,7 +40,7 @@ CNT_300nm = ['CNT_300nm_probka_1_200825.csv', 'CNT_300nm_szklo_200825.csv']
 CNT_50nm_2 = ['CNT_1_1b_50nm_probka_1_200825.csv', 'CNT_100nm_szklo_190825.csv']
 
 
-plt.figure(figsize=(8,6))
+plt.figure(figsize=(10,8))
 
 # #grafen
 # data1 = pd.read_csv(os.path.join(my_path, grafen_b2[2]))
