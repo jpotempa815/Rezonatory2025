@@ -22,16 +22,16 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 # T_ns - 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_280825'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
+save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
+my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_140825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
-my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
+my_path2 = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_010825'
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'kroki_280825_fluencja.png'
+file_save2 = 'grafen_b2_fluence.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -46,8 +46,8 @@ z_min = z_cal[idx_min]
 
 '''GRAPH SHIFT'''
 
-file_zscan = '2_grafen_m1_probka_130825.csv'
-file_surf = '1_grafen_m1_szklo_130825.csv'
+file_zscan = 'grafen_b2_probka_1_140825.csv'
+file_surf = 'grafen_b2_szklo_140825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 data2 = pd.read_csv(os.path.join(my_path, file_surf))
 
@@ -119,9 +119,9 @@ F = E/A_eff #uJ/cm2
 # indeks dla ktorego jest max T
 maxT_index = np.argmax(T)
 
-F_cut = F[:maxT_index]
+F_cut = F[:maxT_index+4]
 
-T_cut = T[:maxT_index]
+T_cut = T[:maxT_index+4]
 
 
 '''PLOT FITTING'''
@@ -141,15 +141,17 @@ T_new = T_fit(F_cut, *fitParams_T)
 '''PLOTTING'''
 
 plt.figure(figsize=(10,8))
-plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
-plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
+# plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
+plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Experimental data')
+# plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
+plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve')
 
-plt.xlabel(r"Fluencja $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=14)
-plt.ylabel("Transmitancja [%]", fontsize=14)
+plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=20)
+plt.ylabel("Transmittance [%]", fontsize=20)
 
 plt.xscale('log')
 plt.grid(linestyle='--')
-plt.legend()
+plt.legend(fontsize=20)
 plt.savefig(os.path.join(save_path, file_save2))
 plt.show()
 

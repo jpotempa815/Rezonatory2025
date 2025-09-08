@@ -4,17 +4,18 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
-file1 = r'2_grafen_m1_probka_130825.csv'
-file2 = r'1_grafen_m1_szklo_130825.csv'
+my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_180825'
+file1 = r'swcnt_sa-2(1)_1_180825.csv'
+file2 = r'swcnt_sa-1(2)_1_180825.csv'
+file3 = r'grafen_b2_szklo_140825.csv'
 # nazwa katalogu zapisu
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_280825'
+save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'krok_plot.png'
+file_save = r'swcnt_sa-2(1)_plot.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
-# data3 = pd.read_csv(os.path.join(my_path, file2))
+data3 = pd.read_csv(os.path.join(my_path, file3))
 
 # zestawienie
 grafen_m1 = ['1_grafen_m1_probka_130825.csv', '2_grafen_m1_probka_130825.csv', '3_grafen_m1_probka_130825.csv', '1_grafen_m1_szklo_130825.csv']
@@ -90,7 +91,7 @@ plt.figure(figsize=(10,8))
 
 df1 = pd.DataFrame(data1)
 df2 = pd.DataFrame(data2)
-# df3 = pd.DataFrame(data3)
+df3 = pd.DataFrame(data3)
 # df3 = pd.DataFrame(data3)
 # df4 = pd.DataFrame(data4)
 # df5 = pd.DataFrame(data5)
@@ -122,7 +123,7 @@ P_ref = P0 * P_wsp #W moc padająca na próbkę
 # P_bez_probki = 0.44 #W moc tracona na przejściu przez drugą soczewkę i szkiełko
 # P_wsp2 = 0.91476
 
-P2 = df2['Power [W]']
+P2 = df3['Power [W]']
 P2_wsp = P2/P_ref
 # #grafen
 # P2_grafen_m1 = df4['Power [W]']
@@ -165,7 +166,7 @@ P_strat = 1 + (1 - P2_wsp)
 # P_strat_CNT_200nm = 1 + (1 - P2_wsp_CNT_200nm)
 # P_strat_CNT_300nm = 1 + (1 - P2_wsp_CNT_300nm)
 
-P1_1 = df1['Power [W]']/P_ref * P_strat * 100
+# P1_1 = df1['Power [W]']/P_ref * P_strat * 100
 # P1_2 = df2['Power [W]']/P_ref * P_strat * 100
 # P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_4 = df4['Power [W]']/P_ref * P_strat * 100
@@ -193,10 +194,10 @@ P1_1 = df1['Power [W]']/P_ref * P_strat * 100
 # P1_CNT_300nm = df20['Power [W]']/P_ref * P_strat_CNT_300nm * 100
 # P1_CNT_50nm_2 = df22['Power [W]']/P_ref * P_strat_CNT_100nm *100
 
-# P1_1 = df1['Power [W]']/P_ref * 100
+P1_1 = df1['Power [W]']/P_ref * 100
 # P1_2 = df2['Power [W]']/P_ref * 100
 # P1_3 = df3['Power [W]']/P_ref * 100
-# P2 = df4['Power [W]']/P_ref * 100
+P2 = df3['Power [W]']/P_ref * 100
 
 # z = df3['Position [mm]']
 z1 = df1['Position [mm]']
@@ -227,17 +228,17 @@ z1 = df1['Position [mm]']
 # plt.plot(z1, P1_CNT_300nm, color='teal', label = 'CNT 300nm')
 # plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (z 23 lipca)')
 
-plt.plot(z1, P1_1, color='darkorange', label = 'Punkt 1')
+plt.plot(z1, P1_1, color='darkorange', label = 'Sample: SA-2(1)')
 # plt.plot(z1, P1_2, color='blue', label='Punkt 2')
-# plt.plot(z1, P2, color='blue', label = 'Szkło')
-plt.xlabel('Pozycja [mm]')
+plt.plot(z1, P2, color='blue', label = 'Glass: graphene b2')
+plt.xlabel('Position [mm]', fontsize=20)
 # plt.ylabel('Moc [W]')
-plt.ylabel('Transmitancja [%]')
+plt.ylabel('Transmittance [%]', fontsize=20)
 # plt.ylabel("Intensywność [arb. units]")
 plt.xlim(0,13)
 # plt.ylim(87,90)
 # plt.legend(loc='lower left')
-# plt.legend()
+plt.legend(fontsize=20)
 plt.grid(linestyle='--')
 plt.savefig(os.path.join(save_path, file_save))
 plt.show()
