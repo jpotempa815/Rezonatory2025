@@ -22,16 +22,16 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 # T_ns - 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
-my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_140825'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
-my_path2 = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_010825'
+my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'grafen_b2_fluence.png'
+file_save2 = 'grafen_m1_fluence.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -46,8 +46,8 @@ z_min = z_cal[idx_min]
 
 '''GRAPH SHIFT'''
 
-file_zscan = 'grafen_b2_probka_1_140825.csv'
-file_surf = 'grafen_b2_szklo_140825.csv'
+file_zscan = '2_grafen_m1_probka_130825.csv'
+file_surf = '1_grafen_m1_szklo_130825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 data2 = pd.read_csv(os.path.join(my_path, file_surf))
 
@@ -119,24 +119,28 @@ F = E/A_eff #uJ/cm2
 # indeks dla ktorego jest max T
 maxT_index = np.argmax(T)
 
-F_cut = F[:maxT_index+4]
+F_cut = F[:maxT_index+1]
 
-T_cut = T[:maxT_index+4]
+T_cut = T[:maxT_index+1]
 
 
 '''PLOT FITTING'''
 # zgadywane parametry do lepszego dopasowania
-T_ns_guess = 100 - max(T_cut)
+T_ns_guess = max(T_cut)
 T_delt_guess = max(T_cut) - min(T_cut)
 T_sat_guess = 0.37*T_delt_guess 
 # F_sat_guess = T_cut[np.argmin(np.abs(max(T_cut) - T_sat_guess))]
-print(T_ns_guess)
-print(T_delt_guess)
-print(T_sat_guess)
+# print(T_delt_guess)
+# print(T_sat_guess)
 # print(F_sat_guess)
 
-fitParams_T, fitCovariances_T = optimize.curve_fit(T_fit, F_cut, T_cut, p0=[T_ns_guess, T_delt_guess, 10], sigma=None)
+fitParams_T, fitCovariances_T = optimize.curve_fit(T_fit, F_cut, T_cut, p0=[T_ns_guess, T_delt_guess, 56], sigma=None)
 T_new = T_fit(F_cut, *fitParams_T)
+T_ns = "%.2f" % (100 - fitParams_T[0])
+T_delt = "%.2f" % fitParams_T[1]
+F_sat = "%.2f" % fitParams_T[2]
+
+
 
 '''PLOTTING'''
 
@@ -148,6 +152,9 @@ plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve
 
 plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=20)
 plt.ylabel("Transmittance [%]", fontsize=20)
+plt.text(2, 98.21, r"T$_\text{ns}$ = "f"{T_ns}" "%", fontsize = 15)
+plt.text(2, 98.11, r"$\Delta$T = " f"{T_delt}" "%", fontsize=15)
+plt.text(2, 98.01, r"F$_\text{sat}$ =" f"{F_sat}" r"$\frac{\mu \text{J}}{\text{cm}^2}$", fontsize=15)
 
 plt.xscale('log')
 plt.grid(linestyle='--')

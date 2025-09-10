@@ -4,18 +4,17 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_180825'
-file1 = r'swcnt_sa-2(1)_1_180825.csv'
-file2 = r'swcnt_sa-1(2)_1_180825.csv'
-file3 = r'grafen_b2_szklo_140825.csv'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
+file1 = r'2_grafen_m1_probka_130825.csv'
+file2 = r'1_grafen_m1_szklo_130825.csv'
+
 # nazwa katalogu zapisu
-save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
+save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'swcnt_sa-2(1)_plot.png'
+file_save = r'grafen_m1_plot.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
-data3 = pd.read_csv(os.path.join(my_path, file3))
 
 # zestawienie
 grafen_m1 = ['1_grafen_m1_probka_130825.csv', '2_grafen_m1_probka_130825.csv', '3_grafen_m1_probka_130825.csv', '1_grafen_m1_szklo_130825.csv']
@@ -59,7 +58,6 @@ plt.figure(figsize=(10,8))
 # data13 = pd.read_csv(os.path.join(my_path, G_2L_D3861[2]))
 
 
-
 #nanorurki
 # data1 = pd.read_csv(os.path.join(my_path, swcnt_sa_3_1[0]))
 # data2 = pd.read_csv(os.path.join(my_path, swcnt_sa_3_1[1]))
@@ -91,7 +89,7 @@ plt.figure(figsize=(10,8))
 
 df1 = pd.DataFrame(data1)
 df2 = pd.DataFrame(data2)
-df3 = pd.DataFrame(data3)
+# df3 = pd.DataFrame(data3)
 # df3 = pd.DataFrame(data3)
 # df4 = pd.DataFrame(data4)
 # df5 = pd.DataFrame(data5)
@@ -123,7 +121,7 @@ P_ref = P0 * P_wsp #W moc padająca na próbkę
 # P_bez_probki = 0.44 #W moc tracona na przejściu przez drugą soczewkę i szkiełko
 # P_wsp2 = 0.91476
 
-P2 = df3['Power [W]']
+P2 = df2['Power [W]']
 P2_wsp = P2/P_ref
 # #grafen
 # P2_grafen_m1 = df4['Power [W]']
@@ -166,11 +164,11 @@ P_strat = 1 + (1 - P2_wsp)
 # P_strat_CNT_200nm = 1 + (1 - P2_wsp_CNT_200nm)
 # P_strat_CNT_300nm = 1 + (1 - P2_wsp_CNT_300nm)
 
-# P1_1 = df1['Power [W]']/P_ref * P_strat * 100
+P1_1 = df1['Power [W]']/P_ref * P_strat * 100
 # P1_2 = df2['Power [W]']/P_ref * P_strat * 100
 # P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_4 = df4['Power [W]']/P_ref * P_strat * 100
-#grafen
+# #grafen
 # P1_grafen_m1 = df3['Power [W]']/P_ref * P_strat_grafen_m1 * 100
 # P1_grafen_b2 = df2['Power [W]']/P_ref * P_strat_grafen_b2 * 100
 # P1_G_3L_1 = df6['Power [W]']/P_ref * P_strat_G_3L * 100
@@ -179,7 +177,7 @@ P_strat = 1 + (1 - P2_wsp)
 # P1_SixCarbon = df9['Power [W]']/P_ref * P_strat_SixCarbon * 100
 # P1_G_2L_1 = df11['Power [W]']/ P_ref * P_strat_G_2L * 100
 # P1_G_2L_2 = df12['Power [W]']/P_ref * P_strat_G_2L*100
-#nanorurki
+# #nanorurki
 # P1_swcnt_sa_3_1 = df1['Power [W]']/P_ref * P_strat_swcnt_sa_3_1 * 100
 # P1_swcnt_sa_3_2 = df3['Power [W]']/P_ref * P_strat_swcnt_sa_3_1 * 100
 # P1_swcnt_sa_1_2 = df4['Power [W]']/P_ref * P_strat_swcnt_sa_3_1 * 100
@@ -194,10 +192,12 @@ P_strat = 1 + (1 - P2_wsp)
 # P1_CNT_300nm = df20['Power [W]']/P_ref * P_strat_CNT_300nm * 100
 # P1_CNT_50nm_2 = df22['Power [W]']/P_ref * P_strat_CNT_100nm *100
 
-P1_1 = df1['Power [W]']/P_ref * 100
-# P1_2 = df2['Power [W]']/P_ref * 100
-# P1_3 = df3['Power [W]']/P_ref * 100
-P2 = df3['Power [W]']/P_ref * 100
+# P1_1 = df1['Power2 [W]']/P_ref * 100
+# P1_2 = df2['Power2 [W]']/P_ref * 100
+# P1_3 = df3['Power2 [W]']/P_ref * 100
+# P1_4 = df4['Power2 [W]']/P_ref * 100
+# P1_5 = df5['Power2 [W]']/P_ref * 100
+# P2 = df3['Power [W]']/P_ref * 100
 
 # z = df3['Position [mm]']
 z1 = df1['Position [mm]']
@@ -205,40 +205,44 @@ z1 = df1['Position [mm]']
 '''PLOT'''
 
 # #grafen
-# plt.plot(z, P1_grafen_m1, color='darkorange', label = 'grafen m1 KAIST')
-# plt.plot(z1, P1_grafen_b2, color='blue', label = 'grafen b2 KAIST')
-# plt.plot(z1, P1_G_3L_1, color='red', label = 'G_3L: 1 warstwa')
-# plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 warstwy')
-# plt.plot(z1, P1_G_1030_BM, color='purple', label = 'G_1030_BM')
-# plt.plot(z1, P1_SixCarbon, color='brown', label = 'SixCarbon')
-# plt.plot(z1, P1_G_2L_1, color='magenta', label='G_2L: 1 warstwa')
-# plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 warstwy')
+# plt.plot(z, P1_grafen_m1, color='darkorange', label = 'graphene m1 KAIST', linewidth=3)
+# plt.plot(z1, P1_grafen_b2, color='blue', label = 'grafen b2 KAIST', linewidth=3)
+# plt.plot(z1, P1_G_3L_1, color='red', label = 'G_3L: 1 layer', linewidth=3)
+# plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 layers', linewidth=3)
+# plt.plot(z1, P1_G_1030_BM, color='purple', label = 'G_1030_BM', linewidth=3)
+# plt.plot(z1, P1_SixCarbon, color='brown', label = 'SixCarbon', linewidth=3)
+# plt.plot(z1, P1_G_2L_1, color='magenta', label='G_2L: 1 layer', linewidth=3)
+# plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 layers', linewidth=3)
 #nanorurki
-# plt.plot(z1, P1_swcnt_sa_3_1, color='darkorange', label = 'swcnt_sa-3(1)')
-# plt.plot(z1, P1_swcnt_sa_3_2, color='blue', label = 'swcnt_sa-3(2)')
-# plt.plot(z1, P1_swcnt_sa_1_2, color='red', label = 'swcnt_sa-1(2)')
-# plt.plot(z1, P1_swcnt_sa_2_1, color='green', label = 'swcnt_sa-2(1)')
-# plt.plot(z1, P1_CNT_25nm, color='purple', label = 'CNT 25nm')
-# plt.plot(z1, P1_CNT_30nm, color='brown', label = 'CNT 30nm')
-# plt.plot(z1, P1_CNT_40nm, color='pink', label = 'CNT 40nm')
-# plt.plot(z1, P1_CNT_50nm, color='cyan', label = 'CNT 50nm')
-# plt.plot(z1, P1_CNT_100nm, color='magenta', label = 'CNT 100nm')
-# plt.plot(z1, P1_CNT_150nm, color='gray', label = 'CNT 150nm')
-# plt.plot(z1, P1_CNT_200nm, color='olive', label = 'CNT 200nm')
-# plt.plot(z1, P1_CNT_300nm, color='teal', label = 'CNT 300nm')
-# plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (z 23 lipca)')
+# plt.plot(z1, P1_swcnt_sa_3_1, color='darkorange', label = 'swcnt_sa-3(1)', linewidth=3)
+# plt.plot(z1, P1_swcnt_sa_3_2, color='blue', label = 'swcnt_sa-3(2)', linewidth=3)
+# plt.plot(z1, P1_swcnt_sa_1_2, color='red', label = 'swcnt_sa-1(2)', linewidth=3)
+# plt.plot(z1, P1_swcnt_sa_2_1, color='green', label = 'swcnt_sa-2(1)', linewidth=3)
+# plt.plot(z1, P1_CNT_25nm, color='purple', label = 'CNT 25nm', linewidth=3)
+# plt.plot(z1, P1_CNT_30nm, color='brown', label = 'CNT 30nm', linewidth=3)
+# plt.plot(z1, P1_CNT_40nm, color='pink', label = 'CNT 40nm', linewidth=3)
+# plt.plot(z1, P1_CNT_50nm, color='cyan', label = 'CNT 50nm', linewidth=3)
+# plt.plot(z1, P1_CNT_100nm, color='magenta', label = 'CNT 100nm', linewidth=3)
+# plt.plot(z1, P1_CNT_150nm, color='gray', label = 'CNT 150nm', linewidth=3)
+# plt.plot(z1, P1_CNT_200nm, color='olive', label = 'CNT 200nm', linewidth=3)
+# plt.plot(z1, P1_CNT_300nm, color='teal', label = 'CNT 300nm', linewidth=3)
+# plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (different source)', linewidth=3)
 
-plt.plot(z1, P1_1, color='darkorange', label = 'Sample: SA-2(1)')
-# plt.plot(z1, P1_2, color='blue', label='Punkt 2')
-plt.plot(z1, P2, color='blue', label = 'Glass: graphene b2')
+plt.plot(z1, P1_1, color='darkorange', label = 'Measurement 2')#, linewidth=3)
+# plt.plot(z1, P1_2, color='chocolate', label = 'Measurement 3', linewidth=3)
+# plt.plot(z1, P1_3, color='olive', label = 'Measurement 8', linewidth=3)
+# plt.plot(z1, P1_4, color='forestgreen', label = 'Measurement 12', linewidth=3)
+# plt.plot(z1, P1_5, color='teal', label = 'Measurement 16', linewidth=3)
+# plt.plot(z1, P2, color='brown', label = 'Raw data: glass', linewidth=3)
+# plt.plot(z1, P1, color='olive', label='Raw data: sample', linewidth=3)
 plt.xlabel('Position [mm]', fontsize=20)
 # plt.ylabel('Moc [W]')
 plt.ylabel('Transmittance [%]', fontsize=20)
 # plt.ylabel("Intensywność [arb. units]")
 plt.xlim(0,13)
 # plt.ylim(87,90)
-# plt.legend(loc='lower left')
-plt.legend(fontsize=20)
+# plt.legend(loc='upper left', fontsize =14)
+# plt.legend(fontsize=20)
 plt.grid(linestyle='--')
 plt.savefig(os.path.join(save_path, file_save))
 plt.show()
