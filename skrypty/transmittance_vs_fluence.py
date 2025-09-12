@@ -23,7 +23,7 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 
 '''CALIBRATION DATA'''
 save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_140825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
@@ -31,7 +31,7 @@ my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'grafen_m1_fluence.png'
+file_save2 = 'dluzsze_b2_fluencja.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -46,8 +46,8 @@ z_min = z_cal[idx_min]
 
 '''GRAPH SHIFT'''
 
-file_zscan = '2_grafen_m1_probka_130825.csv'
-file_surf = '1_grafen_m1_szklo_130825.csv'
+file_zscan = 'grafen_b2_probka_1_140825.csv'
+file_surf = 'grafen_b2_szklo_140825.csv'
 data = pd.read_csv(os.path.join(my_path, file_zscan))
 data2 = pd.read_csv(os.path.join(my_path, file_surf))
 
@@ -89,16 +89,16 @@ fitParams_Y, fitCovariances_Y = optimize.curve_fit(d4Sig, z_cal, d_cal_Y, p0=(14
 # w0_Y -> fitParams_Y[0]
 # M2_Y -> fitParams_Y[1]
 
-plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2])*1e6, color = 'orangered', label = 'Dopasowana funkcja')
-plt.scatter(z_cal*1e3, d_cal_X*1e6, color = 'orange', label='Pomiar kalibracyjny')
-file_save = 'fit.png'
-plt.legend()
-plt.ylabel(r"Szerokość wiązki [$\mu$m]")
-plt.xlabel("Pozycja [mm]")
-plt.legend()
-plt.grid(ls='--')
+# plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2])*1e6, color = 'orangered', label = 'Dopasowana funkcja')
+# plt.scatter(z_cal*1e3, d_cal_X*1e6, color = 'orange', label='Pomiar kalibracyjny')
+# file_save = 'fit.png'
+# plt.legend()
+# plt.ylabel(r"Szerokość wiązki [$\mu$m]")
+# plt.xlabel("Pozycja [mm]")
+# plt.legend()
+# plt.grid(ls='--')
 # plt.savefig(os.path.join(my_path, file_save))
-plt.show()
+# plt.show()
 
 '''FLUENCE CALCULATION'''
 
@@ -140,7 +140,9 @@ T_ns = "%.2f" % (100 - fitParams_T[0])
 T_delt = "%.2f" % fitParams_T[1]
 F_sat = "%.2f" % fitParams_T[2]
 
-
+# dluzsze
+F_long = np.array([x for x in range(0, 10000)])
+T_new = T_fit(F_long, *fitParams_T)
 
 '''PLOTTING'''
 
@@ -148,17 +150,18 @@ plt.figure(figsize=(10,8))
 # plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
 plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Experimental data')
 # plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
-plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve')
+plt.plot(F_long, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve')
 
 plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=20)
 plt.ylabel("Transmittance [%]", fontsize=20)
-plt.text(2, 98.21, r"T$_\text{ns}$ = "f"{T_ns}" "%", fontsize = 15)
-plt.text(2, 98.11, r"$\Delta$T = " f"{T_delt}" "%", fontsize=15)
-plt.text(2, 98.01, r"F$_\text{sat}$ =" f"{F_sat}" r"$\frac{\mu \text{J}}{\text{cm}^2}$", fontsize=15)
+plt.text(2, 96.81, r"T$_\text{ns}$ = "f"{T_ns}" "%", fontsize = 15)
+plt.text(2, 96.71, r"$\Delta$T = " f"{T_delt}" "%", fontsize=15)
+plt.text(2, 96.61, r"F$_\text{sat}$ =" f"{F_sat}" r"$\frac{\mu \text{J}}{\text{cm}^2}$", fontsize=15)
 
 plt.xscale('log')
 plt.grid(linestyle='--')
-plt.legend(fontsize=20)
+# plt.ylim(97.4, 100)
+plt.legend(loc="lower right", fontsize=20)
 plt.savefig(os.path.join(save_path, file_save2))
 plt.show()
 
