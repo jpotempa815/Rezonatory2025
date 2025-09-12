@@ -18,8 +18,7 @@ def d4Sig(z,w0,m2,z0,lam=2300e-9):
 	return np.sqrt(w0**2 + m2**2 * (lam/(np.pi*w0))**2 * (z-z0)**2)
 
 def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
-	return T_ns - (1 - np.exp(-F/F_sat)) * T_delt/(F/F_sat)# - F/F_2
-# T_ns - 
+	return T_ns - (1 - np.exp(-F/F_sat)) * T_delt/(F/F_sat)# - F/F_2 
 
 '''CALIBRATION DATA'''
 save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
@@ -89,16 +88,18 @@ fitParams_Y, fitCovariances_Y = optimize.curve_fit(d4Sig, z_cal, d_cal_Y, p0=(14
 # w0_Y -> fitParams_Y[0]
 # M2_Y -> fitParams_Y[1]
 
-# plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2])*1e6, color = 'orangered', label = 'Dopasowana funkcja')
-# plt.scatter(z_cal*1e3, d_cal_X*1e6, color = 'orange', label='Pomiar kalibracyjny')
-# file_save = 'fit.png'
-# plt.legend()
-# plt.ylabel(r"Szerokość wiązki [$\mu$m]")
-# plt.xlabel("Pozycja [mm]")
-# plt.legend()
-# plt.grid(ls='--')
-# plt.savefig(os.path.join(my_path, file_save))
-# plt.show()
+plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_X[0], fitParams_X[1], fitParams_X[2])*1e6, color = 'orangered', label = 'Dopasowana funkcja X')
+plt.scatter(z_cal*1e3, d_cal_X*1e6, color = 'orange', label='Pomiar kalibracyjny X')
+plt.plot(z_cal*1e3, d4Sig(z_cal, fitParams_Y[0], fitParams_Y[1], fitParams_Y[2])*1e6, color = 'purple', label = 'Dopasowana funkcja Y')
+plt.scatter(z_cal*1e3, d_cal_Y*1e6, color = 'violet', label='Pomiar kalibracyjny Y')
+file_save = 'fit.png'
+plt.legend()
+plt.ylabel(r"Szerokość wiązki [$\mu$m]")
+plt.xlabel("Pozycja [mm]")
+plt.legend()
+plt.grid(ls='--')
+plt.savefig(os.path.join(my_path, file_save))
+plt.show()
 
 '''FLUENCE CALCULATION'''
 
@@ -117,11 +118,13 @@ F = E/A_eff #uJ/cm2
 
 '''DOUBLE FLUENCE IS NO MORE'''
 # indeks dla ktorego jest max T
-maxT_index = np.argmax(T)
+F_max_index = np.argmax(F)
 
-F_cut = F[:maxT_index+1]
+# maxT_index = np.argmax(T)
 
-T_cut = T[:maxT_index+1]
+F_cut = F[:F_max_index]
+
+T_cut = T[:F_max_index]
 
 
 '''PLOT FITTING'''

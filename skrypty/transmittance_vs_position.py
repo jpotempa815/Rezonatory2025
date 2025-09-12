@@ -4,16 +4,16 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_130825'
-file1 = r'2_grafen_m1_probka_130825.csv'
-file2 = r'1_grafen_m1_probka_130825.csv'
-file3 = r'1_grafen_m1_probka_130825.csv'
-file4 = r'1_grafen_m1_szklo_130825.csv'
+my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
+file1 = r'9_probka_120825.csv'
+file2 = r'9_probka_120825.csv'
+file3 = r'9_probka_120825.csv'
+file4 = r'9_szklo_120825.csv'
 
 # nazwa katalogu zapisu
 save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'kroki_plot.png'
+file_save = r'grafen_m1_plot.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
