@@ -11,7 +11,7 @@ file3 = r'1_grafen_m1_probka_130825.csv'
 file4 = r'1_grafen_m1_szklo_130825.csv'
 
 # nazwa katalogu zapisu
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
+save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
 # wpisz nazwę pliku do zapisu wykresus
 file_save = r'kroki_plot.png'
 
@@ -150,7 +150,7 @@ P2_wsp = P2/P_ref
 # P2_wsp_CNT_300nm = df21['Power [W]']/P_ref
 
 # czynnik strat 
-P_strat = 1 + (1 - P2_wsp)
+# P_strat = 1 + (1 - P2_wsp)
 #grafen
 # P_strat_grafen_m1 = 1 + (1 - P2_wsp_grafen_m1) 
 # P_strat_grafen_b2 = 1 + (1 - P2_wsp_grafen_b2) 
@@ -205,6 +205,7 @@ P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 
 # z = df3['Position [mm]']
 z1 = df1['Position [mm]']
+z2 = df2['Position [mm]']
 
 '''PLOT'''
 
