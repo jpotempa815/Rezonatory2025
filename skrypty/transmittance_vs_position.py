@@ -150,7 +150,7 @@ P2_wsp = P2/P_ref
 # P2_wsp_CNT_300nm = df21['Power [W]']/P_ref
 
 # czynnik strat 
-# P_strat = 1 + (1 - P2_wsp)
+P_strat = 1 + (1 - P2_wsp)
 #grafen
 # P_strat_grafen_m1 = 1 + (1 - P2_wsp_grafen_m1) 
 # P_strat_grafen_b2 = 1 + (1 - P2_wsp_grafen_b2) 
