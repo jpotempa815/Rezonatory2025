@@ -4,16 +4,17 @@ import pandas as pd
 import os
 
 # wpisz ścieżkę do katalogu z danymi
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_120825'
-file1 = r'9_probka_120825.csv'
-file2 = r'9_probka_120825.csv'
-file3 = r'9_probka_120825.csv'
-file4 = r'9_szklo_120825.csv'
+my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_140825'
+file1 = r'grafen_b2_probka_1_140825.csv'
+file2 = r'grafen_b2_probka_2_140825.csv'
+file3 = r'grafen_b2_probka_2_140825.csv'
+file4 = r'grafen_b2_szklo_140825.csv'
+# file5 = r'grafen_m1_010825.csv'
 
 # nazwa katalogu zapisu
-save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_080925'
+save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_071025'
 # wpisz nazwę pliku do zapisu wykresus
-file_save = r'grafen_m1_plot.png'
+file_save = r'grafen_plot_pl.png'
 
 data1 = pd.read_csv(os.path.join(my_path, file1))
 data2 = pd.read_csv(os.path.join(my_path, file2))
@@ -169,8 +170,8 @@ P_strat = 1 + (1 - P2_wsp)
 # P_strat_CNT_300nm = 1 + (1 - P2_wsp_CNT_300nm)
 
 P1_1 = df1['Power [W]']/P_ref * P_strat * 100
-P1_2 = df2['Power [W]']/P_ref * P_strat * 100
-P1_3 = df3['Power [W]']/P_ref * P_strat * 100
+# P1_2 = df2['Power [W]']/P_ref * P_strat * 100
+# P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_4 = df5['Power [W]']/P_ref * P_strat * 100
 # #grafen
 # P1_grafen_m1 = df3['Power [W]']/P_ref * P_strat_grafen_m1 * 100
@@ -197,27 +198,27 @@ P1_3 = df3['Power [W]']/P_ref * P_strat * 100
 # P1_CNT_50nm_2 = df22['Power [W]']/P_ref * P_strat_CNT_100nm *100
 
 # P1_1 = df1['Power [W]']/P_ref * 100
-# P1_2 = df2['Power [W]']/P_ref * 100
-# P1_3 = df3['Power [W]']/P_ref * 100
+# P1_2 = df2['Power2 [W]']/P_ref * 100
+# P1_3 = df3['Power2 [W]']/P_ref * 100
 # P1_4 = df4['Power2 [W]']/P_ref * 100
 # P1_5 = df5['Power2 [W]']/P_ref * 100
 # P2 = df4['Power [W]']/P_ref * 100
 
 # z = df3['Position [mm]']
 z1 = df1['Position [mm]']
-z2 = df2['Position [mm]']
+# z2 = df2['Position [mm]']
 
 '''PLOT'''
 
 # #grafen
-# plt.plot(z, P1_grafen_m1, color='darkorange', label = 'graphene m1 KAIST', linewidth=3)
+# plt.plot(z, P1_grafen_m1, color='darkorange', label = 'grafen m1 KAIST', linewidth=3)
 # plt.plot(z1, P1_grafen_b2, color='blue', label = 'grafen b2 KAIST', linewidth=3)
-# plt.plot(z1, P1_G_3L_1, color='red', label = 'G_3L: 1 layer', linewidth=3)
-# plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 layers', linewidth=3)
+# plt.plot(z1, P1_G_3L_1, color='red', label = 'G_3L: 1 warstwa', linewidth=3)
+# plt.plot(z1, P1_G_3L_2, color='green', label = 'G_3L: 2 warstwy', linewidth=3)
 # plt.plot(z1, P1_G_1030_BM, color='purple', label = 'G_1030_BM', linewidth=3)
 # plt.plot(z1, P1_SixCarbon, color='brown', label = 'SixCarbon', linewidth=3)
-# plt.plot(z1, P1_G_2L_1, color='magenta', label='G_2L: 1 layer', linewidth=3)
-# plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 layers', linewidth=3)
+# plt.plot(z1, P1_G_2L_1, color='magenta', label='G_2L: 1 warstwa', linewidth=3)
+# plt.plot(z1, P1_G_2L_2, color='cyan', label='G_2L: 2 warstwy', linewidth=3)
 #nanorurki
 # plt.plot(z1, P1_swcnt_sa_3_1, color='darkorange', label = 'swcnt_sa-3(1)', linewidth=3)
 # plt.plot(z1, P1_swcnt_sa_3_2, color='blue', label = 'swcnt_sa-3(2)', linewidth=3)
@@ -231,24 +232,25 @@ z2 = df2['Position [mm]']
 # plt.plot(z1, P1_CNT_150nm, color='gray', label = 'CNT 150nm', linewidth=3)
 # plt.plot(z1, P1_CNT_200nm, color='olive', label = 'CNT 200nm', linewidth=3)
 # plt.plot(z1, P1_CNT_300nm, color='teal', label = 'CNT 300nm', linewidth=3)
-# plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (different source)', linewidth=3)
+# plt.plot(z1, P1_CNT_50nm_2, color='chocolate', label='CNT 50nm (inne źródło)', linewidth=3)
 
-plt.plot(z1, P1_1, color='darkorange', label = 'Punkt 1')#, linewidth=3)
-# plt.plot(z1, P1_2, color='olive', label = 'Punkt 2')#, linewidth=3)
-# plt.plot(z1, P1_3, color='chocolate', label = 'Punkt 3')#, linewidth=3)
+plt.plot(z1, P1_1, color='darkorange', label = 'Pomiar nr 2', linewidth=3)
+# plt.plot(z1, P1_2, color='brown', label = 'Pomiar nr 3', linewidth=3)
+# plt.plot(z1, P1_3, color='chocolate', label = 'Pomiar nr 8', linewidth=3)
 # plt.plot(z1, P1_4, color='forestgreen', label = 'Punkt 3 drugi pomiar')#, linewidth=3)
-# plt.plot(z1, P1_4, color='forestgreen', label = 'Measurement 12', linewidth=3)
-# plt.plot(z1, P1_5, color='teal', label = 'Measurement 16', linewidth=3)
-# plt.plot(z1, P2, color='brown', label = 'Szkło: grafen b2')#, linewidth=3)
-# plt.plot(z1, P1, color='olive', label='Raw data: sample', linewidth=3)
-plt.xlabel('Pozycja [mm]', fontsize=20)
+# plt.plot(z1, P1_4, color='forestgreen', label = 'Pomiar nr 12', linewidth=3)
+# plt.plot(z1, P1_5, color='teal', label = 'Pomiar nr 16', linewidth=3)
+# plt.plot(z1, P2, color='brown', label = 'Surowe dane: szkło', linewidth=3)
+# plt.plot(z1, P1_1, color='olive', label='Surowe dane: próbka', linewidth=3)
+plt.xlabel('Pozycja [mm]', fontsize=30)
 # plt.ylabel('Moc [W]')
-plt.ylabel('Transmitancja [%]', fontsize=20)
+plt.ylabel('Transmitancja [%]', fontsize=30)
 # plt.ylabel("Intensywność [arb. units]")
 plt.xlim(0,13)
 # plt.ylim(89,90)
 # plt.legend(loc='upper left', fontsize =14)
 # plt.legend(fontsize=20)
 plt.grid(linestyle='--')
+plt.tight_layout()
 plt.savefig(os.path.join(save_path, file_save))
 plt.show()

@@ -21,16 +21,16 @@ def T_fit(F, T_ns, T_delt, F_sat):#, F_2):
 	return T_ns - (1 - np.exp(-F/F_sat)) * T_delt/(F/F_sat)# - F/F_2 
 
 '''CALIBRATION DATA'''
-save_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_080925'
-my_path = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_140825'
+save_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\wyniki\wyniki_071025'
+my_path = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_140825'
 # dotyczy pomiarow do 010825 do probki grafen_m1_4 -> wtedy nazwa kalibracja.txt
 # my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\wyniki\wyniki_230725'
 # dotyczy pomiarow od 010825 do probki grafen_m1_4 -> wtedy nazwa beam_profile.txt
-my_path2 = r'C:\Users\gosc\Desktop\Rezonatory2025\Rezonatory2025\pomiary\pomiary_010825'
+my_path2 = r'C:\Users\julia\Desktop\studia\Resonators 2025\Kody\Rezonatory2025\pomiary\pomiary_010825'
 # filename_cal = os.path.join(my_path2, 'kalibracja.txt')
 filename_cal = os.path.join(my_path2, 'beam_profile.txt')
 # nazwa wykresu
-file_save2 = 'dluzsze_b2_fluencja.png'
+file_save2 = 'fluencja_pl.png'
 
 
 data_cal = np.array(np.genfromtxt(filename_cal))
@@ -144,27 +144,30 @@ T_delt = "%.2f" % fitParams_T[1]
 F_sat = "%.2f" % fitParams_T[2]
 
 # dluzsze
-F_long = np.array([x for x in range(0, 10000)])
-T_new = T_fit(F_long, *fitParams_T)
+# F_long = np.array([x for x in range(0, 10000)])
+# T_new = T_fit(F_long, *fitParams_T)
 
 '''PLOTTING'''
 
 plt.figure(figsize=(10,8))
-# plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
-plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Experimental data')
-# plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
-plt.plot(F_long, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve')
+plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Dane eksperymentalne')
+# plt.plot(F_cut, T_cut, 'o', color='coral', linewidth=2, label='Experimental data')
+plt.plot(F_cut, T_new, '-', color='sandybrown', linewidth=2, label='Dopasowana krzywa')
+# plt.plot(F_long, T_new, '-', color='sandybrown', linewidth=2, label='Fitted curve')
 
-plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=20)
-plt.ylabel("Transmittance [%]", fontsize=20)
-plt.text(2, 96.81, r"T$_\text{ns}$ = "f"{T_ns}" "%", fontsize = 15)
-plt.text(2, 96.71, r"$\Delta$T = " f"{T_delt}" "%", fontsize=15)
-plt.text(2, 96.61, r"F$_\text{sat}$ =" f"{F_sat}" r"$\frac{\mu \text{J}}{\text{cm}^2}$", fontsize=15)
+# plt.xlabel(r"Fluence $\left[\frac{ μ\text{J}}{\text{cm}^2}\right]$", fontsize=20)
+plt.xlabel(r"Fluencja $\left[\frac{ \mu \text{J}}{\text{cm}^2}\right]$", fontsize=30)
+# plt.ylabel("Transmittance [%]", fontsize=30)
+plt.ylabel("Transmitancja [%]", fontsize=30)
+# plt.text(2, 96.81, r"T$_\text{ns}$ = "f"{T_ns}" "%", fontsize = 15)
+# plt.text(2, 96.71, r"$\Delta$T = " f"{T_delt}" "%", fontsize=15)
+# plt.text(2, 96.61, r"F$_\text{sat}$ =" f"{F_sat}" r"$\frac{\mu \text{J}}{\text{cm}^2}$", fontsize=15)
 
 plt.xscale('log')
 plt.grid(linestyle='--')
 # plt.ylim(97.4, 100)
 plt.legend(loc="lower right", fontsize=20)
+plt.tight_layout()
 plt.savefig(os.path.join(save_path, file_save2))
 plt.show()
 
