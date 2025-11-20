@@ -1,2 +1,2 @@
-# Rezonatory2025
-Programy do sterowania stolikiem i miernikami mocy. Analiza danych Z-scan. Program stypendialny Rezonatory 2025
+# Internship program Rezonatory2025 funded by Candela Foundation
+Software for controlling the positioning stage and power meters. Z-scan measurement data analysis.
